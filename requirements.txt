@@ -1,2 +1,2 @@
 pyrogram==1.4.9
-telethon==1.24.0
+tgcrypto
