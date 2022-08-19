@@ -3,7 +3,7 @@ import sys
 import subprocess 
 from pyrogram import filters
 from pyrogram.types import Message
-from startup.config import SUDO_ID, HNDLR
+from startup.config import SUDO_ID, HNDLR, DEV
 
 from . import *
 
@@ -40,4 +40,4 @@ async def bash_run(_, msg: Message):
       if msg.from_user.id in DEV: # If from user id
          await msg.reply(OUT)
       if msg.from_user.id in SUDO_ID:
-         await msg.reply("`Dev user required...`")
+         await msg.reply("**DEV** `user is Required....`")
