@@ -4,7 +4,7 @@ import traceback
 
 from pyrogram import filters
 from pyrogram.types import Message 
-from startup.config import SUDO_ID, DEV
+from startup.config import SUDO_ID, DEV, HNDLR
 from . import *
 
 
@@ -38,13 +38,30 @@ async def cmdrunner(_, msg: Message):
         evaluation = "Success✅"
 
     final_output = "**EXEC**: `{}` \n\n **OUTPUT**: \n`{}` \n".format(cmd, evaluation)
-    await msg.edit(final_output)
+    
+    if len(final_output) > 4096:
+        with io.BytesIO(str.encode(final_output)) as out_file:
+            out_file.name = "eval.text"
+            await astro.send_file(
+                msg.chat.id,
+                out_file,
+                force_document=True,
+                allow_cache=False,
+                caption=f"**PROCCESSED**: `{cmd[:1000]}`",
+            )
+            await astro.delete()
+    else:
+        await msg.edit(final_output)
     if msg.from_user.id in DEV:
         await msg.reply(final_output)
     if msg.from_user.id in SUDO_ID:
         await msg.reply("**DEV** `user is Required....`")
 
 
-async def aexec(code, event):
-    exec(f"async def __aexec(event): " + "".join(f"\n {l}" for l in code.split("\n")))
-    return await locals()["__aexec"](event)
+async def aexec(code, mesg: Message):
+    exec(
+        (f"async def __aexec(event, client): " + "\n msg = mesg")
+        + "\n chat = mesg.chat.id"
+        + "".join(f"\n {l}" for l in code.split("\n"))
+    )
+    return await locals()["__aexec"](mesg)
