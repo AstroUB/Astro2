@@ -65,4 +65,4 @@ async def aexec(code, event):
         + "\n astro = client"
         + "".join(f"\n {l}" for l in code.split("\n"))
     )
-    return await locals()["__aexec"](event, client)
+    return await locals()["__aexec"](event, astro)
