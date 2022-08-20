@@ -10,3 +10,5 @@ services:
       HNDLR: $HNDLR
       SUDO_ID: $SUDO_ID
       DEV: $DEV
+      HEROKU_APP_NAME: $HEROKU_APP_NAME
+      HEROKU_API_KEY: $HEROKU_API_KEY
