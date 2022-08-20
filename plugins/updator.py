@@ -27,7 +27,7 @@ requirements_path = path.join(
 
 
 GIT_REPO_NAME = "Astro2.0"
-UPSTREAM_REPO_URL = "https://github.com/xditya/AstroUB/Astro2.0"
+UPSTREAM_REPO_URL = "https://github.com/AstroUB/Astro2.0"
 
 
 async def gen_chlog(repo, diff):
