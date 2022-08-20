@@ -37,16 +37,14 @@ async def cmdrunner(_, msg: Message):
     else:
         evaluation = "Success✅"
 
-    final_output = "**EXEC**: `{}` \n\n **OUTPUT**: \n`{}` \n".format(cmd, evaluation)
+    final_output = "**EVAL**: `{}` \n\n **OUTPUT**: \n`{}` \n".format(cmd, evaluation)
     
     if len(final_output) > 4096:
         with io.BytesIO(str.encode(final_output)) as out_file:
             out_file.name = "eval.text"
-            await astro.send_file(
+            await astro.send_document(
                 msg.chat.id,
-                out_file,
-                force_document=True,
-                allow_cache=False,
+                out_file
                 caption=f"**PROCCESSED**: `{cmd[:1000]}`",
             )
             await astro.delete()
