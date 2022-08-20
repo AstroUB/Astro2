@@ -60,9 +60,9 @@ async def cmdrunner(_, msg: Message):
 
 async def aexec(code, mesg: Message):
     exec(
-        (f"async def __aexec(client, msg: Message): " + "\n msg = mesg")
-        + "\n chat = mesg.chat.id"
+        (f"async def __aexec(msg: Message): " + "\n msg = msg")
+        + "\n chat = msg.chat.id"
         + "".join(f"\n {l}" for l in code.split("\n"))
     )
-    return await locals()["__aexec"](astro, event)
+    return await locals()["__aexec"](msg)
 
