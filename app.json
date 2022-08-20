@@ -1,0 +1,70 @@
+{
+    "name": "Astro2.0",
+    "description": "All new Advanced Userbot Built with pyrogram and Python3 with all Advanced features!",
+    "logo": "",
+    "keywords": [
+        "Telegram",
+        "Userbot",
+        "Astro",
+        "Astro2.0",
+        "pyrogram",
+        "Python3",
+        "Advanced"
+    ],
+    "repository": "https://github.com/AstroUB/Astro2.0",
+    "Developer": "https://DevAdarsh.me/",
+    "env": {
+        "API_ID": {
+            "description": "Please enter your API_ID get yours from my.telegram.org",
+            "required": true,
+            "value": ""
+        },
+        "API_HASH": {
+            "description": "Please enter your API_ID get yours from my.telegram.org",
+            "required": true,
+            "value": ""
+        },
+        "SESSION": {
+            "description": "Please enter the pyrogram string session for suitable vision: 1.4.9\nUSE: https://replit.com/@DynamicAdi/PyroStringGen",
+            "required": true,
+            "value": ""
+        },
+        "BOT_TOKEN": {
+            "description": "Please enter the bot token to activate your assistant bot.\nGet one from USE: https://t.me/BotFather",
+            "required": true,
+            "value": ""
+        },
+        "HNDLR": {
+            "description": "Your bot command handler! The deafult one is [dot](.)",
+            "required": false,
+            "value": "."
+        },
+        "SUDO_ID": {
+            "description": "The integer ID of users to whom you want to assign as Sudo Users!",
+            "required": false,
+            "value": ""
+        },
+        "DEV": {
+            "description": "The integer ID of users to whom you want to give full access of your bot",
+            "required": false,
+            "value": ""
+        },
+        "TIMEZONE": {
+            "description": "Your Country Time Zone!\nGet yours from: https://www.timezoneconverter.com/cgi-bin/findzone.tzc",
+            "required": false,
+            "value": "Asia/Kolkata"
+        }
+
+
+
+    },
+    "addons": [{
+        "plan": "heroku-postgresql",
+        "option": {
+            "vision": "12"
+        }
+    }], 
+    "buildpacks": [{
+        "url": "heroku/python"
+    }]
+}
