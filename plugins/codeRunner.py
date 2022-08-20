@@ -65,3 +65,4 @@ async def aexec(code, mesg: Message):
         + "".join(f"\n {l}" for l in code.split("\n"))
     )
     return await locals()["__aexec"](astro, mesg)
+
