@@ -14,8 +14,8 @@ RUN apt update && apt upgrade -y
 # apt dependencies
 RUN apt install --no-install-recommends -y \
     git bash ffmpeg mediainfo gcc wget \
-    python3-dev procps neofetch make curl \
-    libel1
+    python3-dev procps neofetch make curl
+
 
 # update pip and install requirements
 COPY . .
