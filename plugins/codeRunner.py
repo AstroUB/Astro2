@@ -62,7 +62,7 @@ async def aexec(code, event):
     exec(
         (f"async def __aexec(event, client): " + "\n e = event")
         + "\n chat = event.chat.id"
-        + "\n astro = client
+        + "\n astro = client"
         + "".join(f"\n {l}" for l in code.split("\n"))
     )
     return await locals()["__aexec"](event, client)
