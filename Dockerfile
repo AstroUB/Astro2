@@ -25,7 +25,7 @@ RUN pip3 install -U pip \
 # cleanup, if needed
 RUN apt autoremove --purge
 # Copy main path
-COPY /app/startup
+COPY . /app/startup
 
 # initialise app
 CMD [ "python3", "-m", "startup" ]
