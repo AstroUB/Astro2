@@ -44,7 +44,7 @@ async def cmdrunner(_, msg: Message):
             out_file.name = "eval.text"
             await astro.send_document(
                 msg.chat.id,
-                out_file
+                out_file,
                 caption=f"**PROCCESSED**: `{cmd[:1000]}`",
             )
             await astro.delete()
