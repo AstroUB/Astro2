@@ -58,11 +58,10 @@ async def cmdrunner(_, msg: Message):
         await msg.reply("**DEV** `user is Required....`")
 
 
-async def aexec(code, mesg: Message):
+async def aexec(code, event):
     exec(
-        (f"async def __aexec(msg: Message): " + "\n msg = msg")
-        + "\n chat = msg.chat.id"
+        (f"async def __aexec(event, client): " + "\n e = event")
+        + "\n chat = event.chat.id"
         + "".join(f"\n {l}" for l in code.split("\n"))
     )
-    return await locals()["__aexec"](msg)
-
+    return await locals()["__aexec"](event, event.client)
