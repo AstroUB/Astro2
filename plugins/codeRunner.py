@@ -64,4 +64,4 @@ async def aexec(code, mesg: Message):
         + "\n chat = mesg.chat.id"
         + "".join(f"\n {l}" for l in code.split("\n"))
     )
-    return await locals()["__aexec"](mesg)
+    return await locals()["__aexec"](astro, mesg)
