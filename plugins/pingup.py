@@ -13,7 +13,7 @@ from . import *
 
 
 
-@astro.no_message(filters.command("ping", HNDLR) & filters.me)
+@astro.on_message(filters.command("ping", HNDLR) & filters.me)
 async def ping(_, msg: Message):
     mention = msg.from_user.mention
     start = datetime.now()
