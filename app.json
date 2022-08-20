@@ -13,6 +13,7 @@
     ],
     "repository": "https://github.com/AstroUB/Astro2.0",
     "Developer": "https://DevAdarsh.me/",
+    "stack": "container",
     "env": {
         "API_ID": {
             "description": "Please enter your API_ID get yours from my.telegram.org",
