@@ -50,6 +50,16 @@
             "required": false,
             "value": ""
         },
+        "HEROKU_APP_NAME": {
+            "description": "Please Enter the same app name which you have filled above!",
+            "required": true,
+            "value": ""
+        },
+        "HEROKU_API_KEY": {
+            "description": "This is important to update your bot.\nGet one of your heroku account from\n HERE: ",
+            "required": true,
+            "value": ""
+        },
         "TIMEZONE": {
             "description": "Your Country Time Zone!\nGet yours from: https://www.timezoneconverter.com/cgi-bin/findzone.tzc",
             "required": false,
