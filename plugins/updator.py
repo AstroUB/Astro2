@@ -60,32 +60,32 @@ async def upstream(_, ups: Message):
     off_repo = UPSTREAM_REPO_URL
     force_updateme = False
 
-    try:
-        txt = "`Oops.. Updater cannot continue as "
-        txt += "some problems occured`\n\n**LOGTRACE:**\n"
-        repo = Repo()
-    except NoSuchPathError as error:
-        await ups.edit(f"{txt}\n`directory {error} is not found`")
-        repo.__del__()
-        return
-    except GitCommandError as error:
-        await ups.edit(f"{txt}\n`Early failure! {error}`")
-        repo.__del__()
-        return
-    except InvalidGitRepositoryError as error:
-        await ups.edit(
-                f"**Unfortunately, the directory {error} does not seem to be a git repository.\
-                \nOr Maybe it just needs a sync verification with {GIT_REPO_NAME}\
-            \nBut we can fix that by force updating the userbot using** `{HNDLR}update astro`."
-            )
-        return
-        repo = Repo.init()
-        origin = repo.create_remote("upstream", off_repo)
-        origin.fetch()
-        force_updateme = True
-        repo.create_head("main", origin.refs.main)
-        repo.heads.main.set_tracking_branch(origin.refs.main)
-        repo.heads.main.checkout(True)
+    # try:
+    #     txt = "`Oops.. Updater cannot continue as "
+    #     txt += "some problems occured`\n\n**LOGTRACE:**\n"
+    repo = Repo()
+    # except NoSuchPathError as error:
+    #     await ups.edit(f"{txt}\n`directory {error} is not found`")
+    #     repo.__del__()
+    #     return
+    # except GitCommandError as error:
+    #     await ups.edit(f"{txt}\n`Early failure! {error}`")
+    #     repo.__del__()
+    #     return
+    # except InvalidGitRepositoryError as error:
+    #     await ups.edit(
+    #             f"**Unfortunately, the directory {error} does not seem to be a git repository.\
+    #             \nOr Maybe it just needs a sync verification with {GIT_REPO_NAME}\
+    #         \nBut we can fix that by force updating the userbot using** `{HNDLR}update_astro`."
+    #         )
+        # return
+        # repo = Repo.init()
+        # origin = repo.create_remote("upstream", off_repo)
+        # origin.fetch()
+        # force_updateme = True
+        # repo.create_head("main", origin.refs.main)
+        # repo.heads.main.set_tracking_branch(origin.refs.main)
+        # repo.heads.main.checkout(True)
 
     ac_br = repo.active_branch.name
     if ac_br != "main":
@@ -134,10 +134,10 @@ async def upstream(_, ups: Message):
             remove("Changes.txt")
         else:
             await ups.edit(changelog_str)
-        await ups.respond(f"Do {HNDLR}update astro` to update🛰️")
+        await ups.respond(f"Do {HNDLR}update_astro` to update🛰️")
         return
 
-@astro.on_message(filters.command("update astro", HNDLR) & filters.me)
+@astro.on_message(filters.command("update_astro", HNDLR) & filters.me)
 async def updating(_, ups: Message):
     await ups.edit("Scanning new codes for Latest Update!")
     repo = Repo()
