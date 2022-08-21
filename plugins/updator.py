@@ -64,7 +64,7 @@ def gen_change_Log(repo, diff):
 @astro.on_message(filters.command("update", HNDLR) & filters.me)
 async def update_it(client, msg: Message):
     msg_ = await msg.edit("Searching for Update🔍🔍")
-    repo = Repo()
+    repo = REPO
     ac_br = repo.active_branch.name
     changelog = await gen_change_Log(repo, f"HEAD..upstream/{ac_br}")
     if not changelog:
@@ -123,14 +123,15 @@ async def updating(_, msg: Message):
         execle(sys.executable, *args, environ)
         return
     else:
-        await msg.edit("`Heroku Detected! Pushing, Please Wait`")
+        await msg.edit("Heroku Detected! Pushing, Please Wait..5min\nCheck your bot")
         if "heroku" in repo.remotes:
             remote = repo.remote("heroku")
             remote.set_url(HEROKU_URL)
         else:
             remote = repo.create_remote("heroku", HEROKU_URL)
         try:
-            remote.push(refspec="HEAD:refs/heads/master", force=True)
+            remote.push(refspec="HEAD:refs/heads/main", force=True)
+            await astro.send_message(msg.chat.id, "Bot Updated Successfully!\n\n~Enjoy🥰✨")
         except BaseException as error:
             return await msg.edit(f"**Updater Error** \nTraceBack : `{error}`")
         await msg.edit("`Build Started! Please Wait For 10-15 Minutes!`")
