@@ -56,7 +56,7 @@ async def updateme_requirements():
 async def upstream(_, ups: Message):
     "For .update command, check if the bot is up to date, update if specified"
     await ups.edit("__Searching🔍\nfor Update__")
-    conf = ups.pattern_match.group(1)
+    # conf = ups.pattern_match.group(1)
     off_repo = UPSTREAM_REPO_URL
     force_updateme = False
 
@@ -73,13 +73,12 @@ async def upstream(_, ups: Message):
         repo.__del__()
         return
     except InvalidGitRepositoryError as error:
-        if conf != "now":
-            await ups.edit(
+        await ups.edit(
                 f"**Unfortunately, the directory {error} does not seem to be a git repository.\
                 \nOr Maybe it just needs a sync verification with {GIT_REPO_NAME}\
             \nBut we can fix that by force updating the userbot using** `{HNDLR}update astro`."
             )
-            return
+        return
         repo = Repo.init()
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
@@ -116,7 +115,7 @@ async def upstream(_, ups: Message):
         repo.__del__()
         return
 
-    if conf != "astro" and not force_updateme:
+    if not force_updateme:
         changelog_str = (
             f"**🛰️New UPDATE AVALIABLE🤩**\n\n🌿B R A N C H: [[{ac_br}]]({UPSTREAM_REPO_URL}/tree/{ac_br}):\n\n"
             + "**CHANGELOG📃📰**\n\n"
@@ -138,10 +137,10 @@ async def upstream(_, ups: Message):
         await ups.respond(f"Do {HNDLR}update astro` to update🛰️")
         return
 
-    if force_updateme:
-        await ups.edit("Scanning new codes for Latest Update!")
-    else:
-        await ups.edit("`Updating userbot, please wait....`")
+@astro.on_message(filters.command("update astro", HNDLR) & filters.me)
+async def updating(_, ups: MEssage):
+    await ups.edit("Scanning new codes for Latest Update!")
+    repo = Repo()
     # We're in a Heroku Dyno, handle it's memez.
     if HEROKU_API_KEY is not None:
         heroku = heroku3.from_key(HEROKU_API_KEY)
@@ -166,6 +165,7 @@ async def upstream(_, ups: Message):
         await ups.edit(
             "Updating in progress, please wait for it to complete."
         )
+        ups_rem = repo.remote("upstream")
         ups_rem.fetch(ac_br)
         repo.git.reset("--hard", "FETCH_HEAD")
         heroku_git_url = heroku_app.git_url.replace(
