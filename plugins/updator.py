@@ -138,7 +138,7 @@ async def upstream(_, ups: Message):
         return
 
 @astro.on_message(filters.command("update astro", HNDLR) & filters.me)
-async def updating(_, ups: MEssage):
+async def updating(_, ups: Message):
     await ups.edit("Scanning new codes for Latest Update!")
     repo = Repo()
     # We're in a Heroku Dyno, handle it's memez.
