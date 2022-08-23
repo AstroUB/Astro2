@@ -8,7 +8,7 @@ MANAGER = os.environ.get("MANAGER", "OFF")
 HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", "")
 HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", "")
 MONGO_DB = os.environ.get("MONGO_DB", "")
-
+TIMEZONE = os.environ.get("TIMEZONE", "")
 
 
 
