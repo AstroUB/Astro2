@@ -8,3 +8,17 @@ MANAGER = os.environ.get("MANAGER", "OFF")
 HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", "")
 HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", "")
 MONGO_DB = os.environ.get("MONGO_DB", "")
+
+
+
+
+
+
+PVT_GRP = os.environ.get("PVT_GRP", None)
+    if PVT_GRP is not None:
+        try:
+            PVT_GRP = int(PVT_GRP)
+        except ValueError:
+            raise ValueError(
+                "Invalid Private Group ID. Make sure your ID is starts with -100 and make sure that it is only numbers.")
+
