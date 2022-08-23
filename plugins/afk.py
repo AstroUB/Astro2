@@ -1,3 +1,6 @@
+# All © Copyrights are reversed by Team of Astro2.0
+# This file is part of Astro2.0
+# https://github.com/AstroUb/Astro2.0
 
 
 from pyrogram import filters
@@ -15,7 +18,7 @@ from startup.dB.afkdb import (
 
 
 
-@astro.on(filters.command("afk", HNDLR) & filters.me)
+@astro.on_message(filters.command("afk", HNDLR) & filters.me)
 async def set_afk(_, message: Message):
     name = message.from_user.mention
     pablo = await edit_or_reply(message, "__Processing...__")
