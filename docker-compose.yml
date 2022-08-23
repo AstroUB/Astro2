@@ -12,3 +12,4 @@ services:
       DEV: $DEV
       HEROKU_APP_NAME: $HEROKU_APP_NAME
       HEROKU_API_KEY: $HEROKU_API_KEY
+      MONGO_DB: $MONGO_DB

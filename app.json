@@ -40,6 +40,11 @@
             "required": false,
             "value": "."
         },
+        "MONGO_DB": {
+            "description": "Fill your Mongo DB uri to activate Database Get yours from\nhttps://www.mongodb.com/",
+            "required": true,
+            "value": ""
+        },
         "SUDO_ID": {
             "description": "The integer ID of users to whom you want to assign as Sudo Users!",
             "required": false,
