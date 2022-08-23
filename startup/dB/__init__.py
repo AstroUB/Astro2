@@ -1,17 +1,9 @@
 import os
 import logging
-import os
-import time
 from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure
 from startup.config import MONGO_DB
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - [AstroUB] - %(levelname)s - %(message)s",
-)
-logging.getLogger("pyrogram").setLevel(logging.ERROR)
-logging.getLogger("apscheduler").setLevel(logging.ERROR)
 
 mongodb = MongoClient(MONGO_DB)
 
