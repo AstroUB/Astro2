@@ -15,7 +15,7 @@ TIMEZONE = os.environ.get("TIMEZONE", "")
 
 
 PVT_GRP = os.environ.get("PVT_GRP", None)
-    if PVT_GRP is not None:
+if PVT_GRP is not None:
         try:
             PVT_GRP = int(PVT_GRP)
         except ValueError:
