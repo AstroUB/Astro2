@@ -8,7 +8,7 @@ from startup.config import MONGO_DB
 
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s - [FridayUB] - %(levelname)s - %(message)s",
+    format="%(asctime)s - [AstroUB] - %(levelname)s - %(message)s",
 )
 logging.getLogger("pyrogram").setLevel(logging.ERROR)
 logging.getLogger("apscheduler").setLevel(logging.ERROR)
