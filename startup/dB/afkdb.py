@@ -1,4 +1,4 @@
-from database import dtbs
+from startup.dB import dtbs
 
 afk = dtbs["AFK"]
 
