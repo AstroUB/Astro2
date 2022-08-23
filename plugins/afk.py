@@ -7,7 +7,7 @@ import asyncio
 from . import *
 from misc import *
 
-from startup.db.afkdb import (
+from startup.dB.afkdb import (
     no_afk,
     go_afk,
     check_afk
