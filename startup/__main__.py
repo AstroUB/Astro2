@@ -1,6 +1,16 @@
 from startup.client import astro, assistant
 from pyrogram.errors import AccessTokenInvalid, ApiIdInvalid, ApiIdPublishedFlood
 from startup.config import VC
+import time
+import logging
+import os
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - [AstroUB] - %(levelname)s - %(message)s",
+)
+logging.getLogger("pyrogram").setLevel(logging.ERROR)
+logging.getLogger("apscheduler").setLevel(logging.ERROR)
 
 
 
