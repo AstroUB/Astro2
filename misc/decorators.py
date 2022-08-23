@@ -1,7 +1,7 @@
 # Thanks to Friday!
 
 from startup.client import astro
-from startup.config import PVT_GRP
+from startup.config import PVT_GRP, TIMEZONE
 from pyrogram import StopPropagation, filters, ContinuePropagation
 from pyrogram.handlers import MessageHandler
 from datetime import datetime
@@ -22,7 +22,7 @@ def dynamic(filter_s):
                 raise ContinuePropagation
             except BaseException as e:
                 logging.error(f"Exception - {func.__module__} - {func.__name__} : {e}")
-                TZ = pytz.timezone(Config.TZ)
+                TZ = pytz.timezone(TIMEZONE)
                 datetime_tz = datetime.now(TZ)
                 text = "**!ERROR WHILE HANDLING UPDATES!**\n\n"
                 text += f"\n**Trace Back : ** `{str(format_exc())}`"
