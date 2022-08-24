@@ -131,7 +131,10 @@ async def updating(_, msg: Message):
             remote = repo.create_remote("heroku", HEROKU_URL)
         try:
             remote.push(refspec="HEAD:refs/heads/main", force=True)
-            await astro.send_message(msg.chat.id, "Bot Updated Successfully!\n\n~Enjoy🥰✨")
+            try: 
+              await astro.send_message(msg.chat.id, "Bot Updated Successfully!\n\n~Enjoy🥰✨")
+            except BaseException as err:
+              await bot.send_message(f"You have got a Error While Updating {err}\n\nForward to @Astro_HelpChat\nFor Help😣")
         except BaseException as error:
             return await msg.edit(f"**Updater Error** \nTraceBack : `{error}`")
         await msg.edit("`Build Started! Please Wait For 10-15 Minutes!`")
