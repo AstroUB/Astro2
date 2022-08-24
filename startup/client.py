@@ -8,9 +8,10 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
 
 
 astro = Client(
-    session_name=SESSION,
+    session_string=SESSION,
     api_id=API_ID,
     api_hash=API_HASH,
+    in_memory=True,
     plugins={'root': 'plugins'}
 )
 
