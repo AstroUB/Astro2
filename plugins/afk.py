@@ -53,7 +53,7 @@ async def afk_er(astro, message: Message):
     afk_end = back_alivee.replace(microsecond=0)
     total_afk_time = str((afk_end - afk_start))
     afk_since = "**a while ago**"
-    message_to_reply = (f"I Am **AFK** Right Now.💤😴\n\n**Reason🤔⁉️** : `{reason}`\n\n**Last Seen⌛⏲️:** `{total_afk_time}`" if reason else f"I Am **AFK** Right Now.💤😴\n\n**REASON**🤔⁉️: `I am very Busy Right Now🥵🥵\nI can't talk to your now!!😅\n\nPlease Wait until i will come back😁**.`\n\n**Last Seen⏲️⌛:** `{total_afk_time}`")
+    message_to_reply = (f"I Am **AFK** Right Now.💤😴\n\n**Reason🤔⁉️** : `{reason}`\n\n**Last Seen⌛⏲️:** `{total_afk_time}`" if reason else f"I Am **AFK** Right Now.💤😴\n\n**REASON**🤔⁉️: `I am very Busy Right Now🥵🥵\nI can't talk to your now!!😅\n\nPlease Wait until i will come back😁`\n\n**Last Seen⏲️⌛:** `{total_afk_time}`")
     LL = await message.reply(message_to_reply)
     if chat.type == enums.ChatType.GROUP or enums.ChatType.SUPERGROUP:
       try: 
