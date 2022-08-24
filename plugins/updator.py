@@ -1,7 +1,7 @@
 
 # All rights reserved.
 
-from startup.config import HEROKU_API_KEY, HEROKU_APP_NAME
+from startup.config import HEROKU_API_KEY, HEROKU_APP_NAME, PVT_GRP
 
 from pyrogram import filters
 from pyrogram.types import Message
@@ -131,10 +131,7 @@ async def updating(_, msg: Message):
             remote = repo.create_remote("heroku", HEROKU_URL)
         try:
             remote.push(refspec="HEAD:refs/heads/main", force=True)
-            try: 
-              await astro.send_message(msg.chat.id, "Bot Updated Successfully!\n\n~Enjoy🥰✨")
-            except BaseException as err:
-              await astro.send_message(msg.chat.id, f"You have got a Error While Updating {err}\n\nForward to @Astro_HelpChat\nFor Help😣")
+            await astro.send_message(PVT_GRP, "Master!\nAstro2.0 is Updated Successfully!\nIf you will face Any Issue in Future Please let my Developer(s) to know it😇 at\n→ @Astro_HelpChat\n\n~Enjoy🥰✨")
         except BaseException as error:
             return await msg.edit(f"**Updater Error** \nTraceBack : `{error}`")
         await msg.edit("`Build Started! Please Wait For 10-15 Minutes!`")
