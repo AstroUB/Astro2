@@ -64,7 +64,7 @@ def gen_change_Log(repo, diff):
 @astro.on_message(filters.command("update", HNDLR) & filters.me)
 async def update_it(client, msg: Message):
     msg_ = await msg.edit("Searching for Update🔍🔍")
-    repo = REPO
+    repo = Repo()
     ac_br = repo.active_branch.name
     changelog = await gen_change_Log(repo, f"HEAD..upstream/{ac_br}")
     if not changelog:
