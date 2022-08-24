@@ -3,9 +3,10 @@ import math
 import os
 from pyrogram.types import Message
 from startup.config import SUDO
+from pyrogram import enums
 
 
-async def edit_or_reply(msg: Message, text, parse_mode="MARKDOWN"):
+async def edit_or_reply(msg: Message, text, parse_mode=enums.ParseMode.MARKDOWN):
     if not msg:
         return await msg.edit(text, parse_mode=parse_mode)
     if not msg.from_user:
