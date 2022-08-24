@@ -57,12 +57,13 @@ async def afk_er(astro, message: Message):
     LL = await message.reply(message_to_reply)
     if chat.type == enums.ChatType.GROUP or enums.ChatType.SUPERGROUP:
       try: 
-        await assistant.send_message(PVT_GRP, f"#TAGGED\n\nHey!\nMy Honorable Master Someone has tagged you in group while you were in AFK!\n\n~CHAT - {chat.title}\n", InlineKeyboardMarkup=[
+        await assistant.send_message(PVT_GRP, f"#TAGGED\n\nHey!\nMy Honorable Master Someone has tagged you in group while you were in AFK!\n\n~CHAT - {chat.title}\n", reply_markup=InlineKeyboardMarkup([
     [
         InlineKeyboardButton(
             text="📨Check Message", url=f"https://t.me/c/{str(chat.id)[:4]}/{message.id}")
-    ],
-    ])
+    ]
+    ]),
+   )
       except ValueError:
         await astro.send_message(PVT_GRP, "Master\nYou have not Added Your assistant bot here😅\nWithout Assistant you can't get Tagged Notification\n\nPlease add Assistant Here!")
     message.continue_propagation()
