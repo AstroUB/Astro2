@@ -37,7 +37,7 @@ async def set_afk(_, message: Message):
         go_afk(afk_start) 
     await pablo.edit(msg)
         
-@dynamic(filters.mentioned & ~filters.me & ~filters.bot & ~filters.edited & filters.incoming)
+@dynamic(filters.mentioned & ~filters.me & ~filters.bot & filters.incoming)
 async def afk_er(astro, message: Message):
     lol = check_afk()
     if not lol:
