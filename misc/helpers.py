@@ -1,6 +1,9 @@
 import asyncio
 import math
 import os
+import glob
+import importlib
+import ntpath
 from pyrogram.types import Message
 from startup.config import SUDO
 from pyrogram import enums
@@ -32,3 +35,15 @@ def get_text(message: Message) -> [None, str]:
             return None
     else:
         return None
+
+def load_plugin(plugin_name, assistant=False):
+    if plugin_name.endswith("__"):
+        pass
+    else:
+        if assistant:
+            plugin_path = "assistant." + plugin_name
+        else:
+            plugin_path = "plugins." + plugin_name
+        loader_type = "[Assistant]" if assistant else "[User]"
+        importlib.import_module(plugin_path)
+        logging.info(f"{loader_type} - Loaded : " + str(plugin_name))
