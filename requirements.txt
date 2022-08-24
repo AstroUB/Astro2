@@ -1,4 +1,4 @@
-pyrogram==1.4.9
+pyrogram
 tgcrypto 
 gitpython
 heroku3
