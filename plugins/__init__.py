@@ -2,7 +2,7 @@
 
 import logging
 import os
-from startup.client import astro
+from startup.client import astro, assistant
 from startup.config import HNDLR, PVT_GRP
 
 
@@ -41,5 +41,6 @@ def make_file(text):
 __all__ = (
   "astro",
   "HNDLR",
+  "assistant",
   "Logme"
 )
