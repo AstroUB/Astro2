@@ -57,7 +57,7 @@ async def afk_er(astro, message: Message):
     LL = await message.reply(message_to_reply)
     if chat.type == enums.ChatType.GROUP or enums.ChatType.SUPERGROUP:
       try: 
-        await assistant.send_message(PVT_GRP, f"#TAGGED\n\nHey!\nMy Honorable Master Someone has tagged you in group while you were in AFK!\n\n~CHAT👥: - {chat.title}\n~Message📜: - {message.text}", reply_markup=InlineKeyboardMarkup([
+        await assistant.send_message(PVT_GRP, f"#TAGGED\n\nHey!\nMy Honorable Master Someone has tagged you in group while you were in AFK!\n\n~CHAT👥: - {chat.title}\n~Message📜: - {message.text}\n", reply_markup=InlineKeyboardMarkup([
     [
         InlineKeyboardButton(
             text="📨Check Message", url=f"https://t.me/c/{str(chat.id)[4:]}/{message.id}")
