@@ -8,6 +8,7 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
 
 
 astro = Client(
+    name="[AstroUB]",
     session_string=SESSION,
     api_id=API_ID,
     api_hash=API_HASH,
