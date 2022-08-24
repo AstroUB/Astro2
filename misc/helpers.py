@@ -5,7 +5,7 @@ from pyrogram.types import Message
 from startup.config import SUDO
 
 
-async def edit_or_reply(msg: Message, text, parse_mode="md"):
+async def edit_or_reply(msg: Message, text, parse_mode="MARKDOWN"):
     if not msg:
         return await msg.edit(text, parse_mode=parse_mode)
     if not msg.from_user:
