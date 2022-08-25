@@ -2,6 +2,8 @@
 
 import logging
 import os
+from pyrogram import filters
+from pyrogram.types import Message
 from startup.client import astro, assistant
 from startup.config import HNDLR, PVT_GRP
 
@@ -42,5 +44,7 @@ __all__ = (
   "astro",
   "HNDLR",
   "assistant",
+  "filters",
+  "Message",
   "Logme"
 )
