@@ -6,6 +6,7 @@ import importlib
 import ntpath
 from pyrogram.types import Message
 from startup.config import SUDO
+from startup.client import astro
 from pyrogram import enums
 
 
@@ -62,3 +63,37 @@ def get_user(message: Message, text: str) -> [int, str, None]:
         if len(asplit) == 2:
             reason_ = asplit[1]
     return user_s, reason_
+
+async def is_admin_or_owner(message, user_id) -> bool:
+    """Check If A User Is Creator Or Admin Of The Current Group"""
+    if message.chat.type == enmus.ChatType.PRIVATE:
+        # You Are Boss Of Pvt Chats.
+        return True
+    user_s = await message.chat.get_member(int(user_id))
+    if user_s.status in ("creator", "administrator"):
+        return True
+    return False
+
+async def edit_or_send_as_file(
+    text: str,
+    message: Message,
+    client: astro,
+    caption: str = "`Result!`",
+    file_name: str = "result",
+    parse_mode=enums.ParseMode.MARKDOWN,
+):
+    """Send As File If Len Of Text Exceeds Tg Limit Else Edit Message"""
+    if not text:
+        await message.edit("`Wait, What?`")
+        return
+    if len(text) > 1024:
+        await message.edit("`OutPut is Too Large, Sending As File!`")
+        file_names = f"{file_name}.txt"
+        open(file_names, "w").write(text)
+        await client.send_document(message.chat.id, file_names, caption=caption)
+        await message.delete()
+        if os.path.exists(file_names):
+            os.remove(file_names)
+        return
+    else:
+        return await message.edit(text, parse_mode=parse_mode)
