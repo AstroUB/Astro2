@@ -69,8 +69,17 @@
             "description": "Your Country Time Zone!\nGet yours from: https://www.timezoneconverter.com/cgi-bin/findzone.tzc",
             "required": false,
             "value": "Asia/Kolkata"
+        },
+        "ALV_PIC": {
+            "description": "Telegraph link of image/video/gif you want in Alive Message",
+            "required": false,
+            "value": ""
+        },
+        "ALV_TEXT": {
+            "description": "Piece of text you want in Alive Message",
+            "required": false,
+            "value": ""
         }
-
 
 
     },
